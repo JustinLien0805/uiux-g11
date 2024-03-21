@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import { ArrowBigDownDash, ArrowBigRightDash } from "lucide-react";
+import { ArrowBigRightDash, MoveDown } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: HomeComponent,
@@ -16,7 +16,7 @@ function HomeComponent() {
   const navigate = useNavigate();
   return (
     <>
-      <div className="flex h-[80vh] flex-col items-start justify-center bg-[#232323] px-2 py-10 md:px-40">
+      <div className="flex h-[80vh] flex-col items-start justify-center bg-[#232323] p-10 md:px-40">
         <section className="flex flex-col gap-4">
           <h2 className="scroll-m-20 text-3xl font-semibold tracking-wide text-white first:mt-0">
             UIUX Group 11
@@ -29,7 +29,7 @@ function HomeComponent() {
             onClick={scrollToSection}
           >
             Explore
-            <ArrowBigDownDash className="ml-2 h-6 w-6 animate-bounce" />
+            <MoveDown className="ml-2 h-6 w-6 animate-bounce" />
           </Button>
         </section>
       </div>

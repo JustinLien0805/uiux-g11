@@ -51,7 +51,7 @@ function HwComponent() {
           User Behavior Insights from Travel Insurance Purchase Process
         </h3>
         <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
-          User Behavior Understanding:
+          1. User Behavior Understanding:
         </h4>
         <ul className="my-6 ml-6 list-disc [&>li]:mt-2">
           <li>
@@ -70,7 +70,7 @@ function HwComponent() {
         </ul>
 
         <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
-          Pain Points Identification:
+          2. Pain Points Identification:
         </h4>
         <ul className="my-6 ml-6 list-disc [&>li]:mt-2">
           <li>
@@ -88,7 +88,7 @@ function HwComponent() {
         </ul>
 
         <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
-          Opportunity Discovery:
+          3. Opportunity Discovery:
         </h4>
         <ul className="my-6 ml-6 list-disc [&>li]:mt-2">
           <li>
@@ -109,7 +109,7 @@ function HwComponent() {
         </ul>
 
         <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
-          User Needs Insight:
+          4. User Needs Insight:
         </h4>
         <ul className="my-6 ml-6 list-disc [&>li]:mt-2">
           <li>
@@ -136,20 +136,6 @@ function HwComponent() {
         >
           Artifact Model
         </h2>
-        <h3 className="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight">
-          Jokester's Revolt
-        </h3>
-        <p className="leading-7 [&:not(:first-child)]:mt-6">
-          Jokester began sneaking into the castle in the middle of the night and
-          leaving jokes all over the place: under the king's pillow, in his
-          soup, even in the royal toilet. The king was furious, but he couldn't
-          seem to stop Jokester.
-        </p>
-        <p className="leading-7 [&:not(:first-child)]:mt-6">
-          And then, one day, the people of the kingdom discovered that the jokes
-          left by Jokester were so funny that they couldn't help but laugh. And
-          once they started laughing, they couldn't stop.
-        </p>
       </div>
       <div className="hidden w-96 text-sm text-neutral-300 lg:block">
         <div className="sticky top-16  pt-4">
