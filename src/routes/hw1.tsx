@@ -2,6 +2,10 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef } from "react";
 import { PDFViewer } from "@/components/pdf-reader";
+import am1 from "../assets/am1.png";
+import am2 from "../assets/am2.png";
+import fm1 from "../assets/fm1.png";
+import fm2 from "../assets/fm2.png";
 export const Route = createFileRoute("/hw1")({
   component: HwComponent,
 });
@@ -47,6 +51,10 @@ function HwComponent() {
         >
           Flow Model
         </h2>
+        <div className="flex flex-col gap-4 bg-white">
+          <img src={fm1} alt="" />
+          <img src={fm2} alt="" />
+        </div>
         <h3 className="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight">
           User Behavior Insights from Travel Insurance Purchase Process
         </h3>
@@ -136,6 +144,10 @@ function HwComponent() {
         >
           Artifact Model
         </h2>
+        <div className="flex flex-col gap-4">
+          <img src={am1} alt="" />
+          <img src={am2} alt="" />
+        </div>
       </div>
       <div className="hidden w-96 text-sm text-neutral-300 lg:block">
         <div className="sticky top-16  pt-4">
