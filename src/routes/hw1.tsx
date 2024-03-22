@@ -2,6 +2,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef } from "react";
 import { PDFViewer } from "@/components/pdf-reader";
+import { Link } from "lucide-react";
 import am1 from "../assets/am1.png";
 import am2 from "../assets/am2.png";
 import fm1 from "../assets/fm1.png";
@@ -14,6 +15,7 @@ function HwComponent() {
   const section1Ref = useRef<HTMLDivElement>(null);
   const section2Ref = useRef<HTMLDivElement>(null);
   const section3Ref = useRef<HTMLDivElement>(null);
+  const section4Ref = useRef<HTMLDivElement>(null);
 
   const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
@@ -44,6 +46,19 @@ function HwComponent() {
           </a>
           .
         </p>
+        <h3 className="mt-8 flex scroll-m-20 items-center text-2xl font-semibold tracking-tight">
+          Test Script
+          <a
+            href="https://docs.google.com/document/d/17fco9uX5bkuyUdwyPhS6wCuRDFIUPmST9qYSxpV1Ppo/edit?usp=sharing"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Link className="ml-2 h-6 w-6" />
+          </a>
+        </h3>
+        <h3 className="mt-8 flex scroll-m-20 items-center text-2xl font-semibold tracking-tight">
+          Transcript
+        </h3>
         <p className="leading-7 [&:not(:first-child)]:mt-6">
           Here are the Transcripts of the two participants
         </p>
@@ -58,6 +73,23 @@ function HwComponent() {
           <img src={fm1} alt="" />
           <img src={fm2} alt="" />
         </div>
+
+        <h2
+          ref={section3Ref}
+          className="mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0"
+        >
+          Artifact Model
+        </h2>
+        <div className="flex flex-col gap-4">
+          <img src={am1} alt="" />
+          <img src={am2} alt="" />
+        </div>
+        <h2
+          ref={section4Ref}
+          className="mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0"
+        >
+          Summary
+        </h2>
         <h3 className="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight">
           User Behavior Insights from Travel Insurance Purchase Process
         </h3>
@@ -141,16 +173,6 @@ function HwComponent() {
             insurance.
           </li>
         </ul>
-        <h2
-          ref={section3Ref}
-          className="mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0"
-        >
-          Artifact Model
-        </h2>
-        <div className="flex flex-col gap-4">
-          <img src={am1} alt="" />
-          <img src={am2} alt="" />
-        </div>
       </div>
       <div className="hidden w-96 text-sm text-neutral-300 lg:block">
         <div className="sticky top-16  pt-4">
@@ -187,6 +209,16 @@ function HwComponent() {
                       }}
                     >
                       Artifact Model
+                    </a>
+                  </li>
+                  <li className="mt-0 pt-2">
+                    <a
+                      className="inline-block cursor-pointer no-underline transition-colors hover:text-neutral-100"
+                      onClick={() => {
+                        scrollToSection(section4Ref);
+                      }}
+                    >
+                      Summary
                     </a>
                   </li>
                 </ul>
