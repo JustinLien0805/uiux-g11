@@ -44,6 +44,9 @@ function HwComponent() {
           </a>
           .
         </p>
+        <p className="leading-7 [&:not(:first-child)]:mt-6">
+          Here are the Transcripts of the two participants
+        </p>
         <PDFViewer />
         <h2
           ref={section2Ref}
