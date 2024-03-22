@@ -1,5 +1,5 @@
 import { Outlet, createRootRoute, useNavigate } from "@tanstack/react-router";
-import { TanStackRouterDevtools } from "@tanstack/router-devtools";
+// import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 import { Button } from "@/components/ui/button";
 
 const RootComponent = () => {
@@ -42,7 +42,7 @@ const RootComponent = () => {
         <Outlet />
       </div>
 
-      <TanStackRouterDevtools />
+      {/* <TanStackRouterDevtools /> */}
     </>
   );
 };
