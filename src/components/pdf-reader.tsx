@@ -1,4 +1,3 @@
-import textscript from "../assets/textscript.pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 import { pdfjs, Document, Page } from "react-pdf";
@@ -10,8 +9,8 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.js",
   import.meta.url,
 ).toString();
-const MAXWIDTH = 500;
-export const PDFViewer = () => {
+const MAXWIDTH = 600;
+export const PDFViewer = ({ url }: { url: string }) => {
   const [numPages, setNumPages] = useState<number>(1);
   const [containerWidth, setContainerWidth] = useState<number>(
     window.innerWidth,
@@ -39,12 +38,12 @@ export const PDFViewer = () => {
   return (
     <div className="mt-6 flex w-full max-w-md flex-col items-center gap-4 self-center">
       <Document
-        file={textscript}
+        file={url}
         onLoadSuccess={(e: any) => setNumPages(e.numPages)}
       >
         <Page
           pageNumber={currentPage}
-          width={containerWidth && containerWidth < MAXWIDTH ? 240 : MAXWIDTH}
+          width={containerWidth && containerWidth < MAXWIDTH ? 280 : MAXWIDTH}
         />
       </Document>
       <div className="flex items-center gap-4">

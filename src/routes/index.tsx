@@ -17,13 +17,13 @@ const hwData: hwDataType[] = [
   {
     title: "CI and Models",
     description:
-      "We conducted a contextual inquiry with two participants to observe their interactions and behaviors while purchasing travel insurance on the 新安東京海上產險 .",
+      "Conducted a contextual inquiry with two participants to observe their interactions and behaviors while purchasing travel insurance on the 新安東京海上產險 .",
     hw: "hw1",
   },
   {
     title: "Affinity Diagram",
     description:
-      "We create an affinity diagram through the insights we gathered from the contextual inquiry to identify the pain points and opportunities for improvement.",
+      "Created an affinity diagram through the insights we gathered from the contextual inquiry to identify the pain points and opportunities for improvement.",
     hw: "hw2",
   },
 ];

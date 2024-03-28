@@ -3,10 +3,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useRef } from "react";
 import { PDFViewer } from "@/components/pdf-reader";
 import { Link } from "lucide-react";
-import am1 from "../assets/am1.png";
-import am2 from "../assets/am2.png";
 import fm1 from "../assets/fm1.svg";
-import fm2 from "../assets/fm2.png";
+import fm2 from "../assets/fm2.svg";
+import textscript from "../assets/textscript.pdf";
+import afUrl from "../assets/af.pdf";
 export const Route = createFileRoute("/hw1")({
   component: HwComponent,
 });
@@ -62,7 +62,7 @@ function HwComponent() {
         <p className="leading-7 [&:not(:first-child)]:mt-6">
           Here are the Transcripts of the two participants
         </p>
-        <PDFViewer />
+        <PDFViewer url={textscript} />
         <h2
           ref={section2Ref}
           className="mb-6 mt-10 scroll-m-20  border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0"
@@ -80,10 +80,7 @@ function HwComponent() {
         >
           Artifact Model
         </h2>
-        <div className="flex w-2/3 flex-col gap-4 self-center">
-          <img src={am1} alt="" />
-          <img src={am2} alt="" />
-        </div>
+        <PDFViewer url={afUrl} />
         <h2
           ref={section4Ref}
           className="mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0"
@@ -103,17 +100,27 @@ function HwComponent() {
         </p>
         <p className="leading-7 [&:not(:first-child)]:mt-6">
           After the interviews, we observed the actions and feedback of the two
-          participants. At the beginning, interviewee 1 did not review product
-          details and immediately tried to purchase a plan. He abandoned
+          participants. In the beginning, interviewee 1 did not review product
+          details and immediately tried to purchase a plan. He wanted to abandon
           initially when unable to select travel dates over a month out with no
-          explanation provided. Interviewee 2 also did not review details
-          beforehand, and spent little time on underwriting notification pop-up.
-          She encountered an issue of not being able to find the country she
-          wanted to go to while navigating the country selection, and ran into a
-          couple error pop-ups from skipping some basic information buttons. We
-          noticed that both participants abandoned their purchasing process when
-          they were asked to register for an account, as the process was too
-          long.
+          explanation provided. Interviewee 2, however, did choose the South
+          East Asia Plan and spent little time on the underwriting notification
+          pop-up. She encountered an issue of not being able to find the country
+          she wanted to go to while navigating the country selection even though
+          she had already chosen the plan and ran into a couple of error pop-ups
+          from skipping some basic information buttons because she didn't know
+          she need to scroll through the terms and service to be able to
+          proceed. She was being interrupted by the huge X icon so she couldn't
+          find the actual close button. We noticed that both participants wanted
+          to abandon their purchasing process when they were asked to register
+          for an account, as the process was complicated and required phone
+          verification. The form was also frustrating for them to identify which
+          form was required or optional. After that, the process went smoothly
+          until the payment process, where both interviewees found it
+          troublesome that they needed to do the phone verification again.
+          Interviewee 1 especially pointed out that the payment method is too
+          limited, he couldn't use the method he wanted like Apple Pay, Line
+          Pay, etc.
         </p>
         <p className="leading-7 [&:not(:first-child)]:mt-6">
           After further analysis, we came to the following conclusion regarding
