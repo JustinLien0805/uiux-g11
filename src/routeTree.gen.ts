@@ -11,10 +11,16 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as Hw2Import } from './routes/hw2'
 import { Route as Hw1Import } from './routes/hw1'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
+
+const Hw2Route = Hw2Import.update({
+  path: '/hw2',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const Hw1Route = Hw1Import.update({
   path: '/hw1',
@@ -38,11 +44,15 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Hw1Import
       parentRoute: typeof rootRoute
     }
+    '/hw2': {
+      preLoaderRoute: typeof Hw2Import
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren([IndexRoute, Hw1Route])
+export const routeTree = rootRoute.addChildren([IndexRoute, Hw1Route, Hw2Route])
 
 /* prettier-ignore-end */

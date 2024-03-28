@@ -2,7 +2,7 @@ import textscript from "../assets/textscript.pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 import { pdfjs, Document, Page } from "react-pdf";
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { PlusCircleIcon, MinusCircleIcon } from "lucide-react";
 
