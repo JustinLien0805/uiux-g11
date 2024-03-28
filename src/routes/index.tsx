@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 
 import { MoveDown } from "lucide-react";
@@ -33,7 +33,6 @@ function HomeComponent() {
   const scrollToSection = (): void => {
     targetSectionRef.current?.scrollIntoView({ behavior: "smooth" });
   };
-  const navigate = useNavigate();
   return (
     <>
       <div className="flex h-[80vh] flex-col items-start justify-center bg-[#232323] p-2 md:px-20 lg:px-40">
