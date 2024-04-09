@@ -7,7 +7,7 @@ export const HomeworkCard = ({
 }: {
   title: string;
   description: string;
-  hw: "hw1" | "hw2";
+  hw: "hw1" | "hw2" | "hw3";
 }) => {
   const navigate = useNavigate();
   return (

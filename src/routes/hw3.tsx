@@ -1,9 +1,8 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef } from "react";
-import affinitydiagram from "../assets/affinitydiagram.jpg";
-
-export const Route = createFileRoute("/hw2")({
+import persona from "../assets/persona.png";
+export const Route = createFileRoute("/hw3")({
   component: HwComponent,
 });
 
@@ -14,10 +13,10 @@ function HwComponent() {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
   return (
-    <main className="relative flex min-h-screen gap-6 px-2 pb-40 pt-20 text-white md:px-40">
-      <div className="flex flex-col gap-4 w-full">
+    <main className="relative flex gap-6 px-2 pb-40 pt-20 text-white md:px-40">
+      <div className="flex flex-col gap-4">
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
-          HW2: AFFINITY DIAGRAM
+          HW3: PERSONA
         </h1>
         <h2
           ref={section1Ref}
@@ -25,7 +24,7 @@ function HwComponent() {
         >
           Persona
         </h2>
-        <img src={affinitydiagram} alt="affinitydiagram" />
+        <img src={persona} alt="persona" />
       </div>
       <div className="hidden w-60 text-sm text-neutral-300 lg:block">
         <div className="sticky top-16  pt-4">

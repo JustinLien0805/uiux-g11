@@ -24,7 +24,7 @@ function HwComponent() {
     <main className="relative flex gap-6 px-2 pb-40 pt-20 text-white md:px-40">
       <div className="flex flex-col">
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
-          HW1: CI and Models
+          HW1: CI AND MODELS
         </h1>
         <h2
           ref={section1Ref}
