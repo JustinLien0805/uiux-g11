@@ -1,12 +1,16 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef } from "react";
+import { Button } from "@/components/ui/button";
 import { PDFViewer } from "@/components/pdf-reader";
 import { Link } from "lucide-react";
 import fm1 from "../assets/fm1.svg";
 import fm2 from "../assets/fm2.svg";
 import textscript from "../assets/textscript.pdf";
 import afUrl from "../assets/af.pdf";
+import ciSummary from "../assets/CI_Summary.pdf";
+import { saveAs } from "file-saver";
+import JSZip from "jszip";
 export const Route = createFileRoute("/hw1")({
   component: HwComponent,
 });
@@ -20,12 +24,49 @@ function HwComponent() {
   const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const handleDownload = async () => {
+    const zip = new JSZip();
+
+    // List of files to add to the zip
+    const files: { path: string; name: string }[] = [
+      { path: fm1, name: "flow_model_1.svg" },
+      { path: fm2, name: "flow_model_2.png" },
+      { path: textscript, name: "textscript.pdf" },
+      { path: afUrl, name: "affinity_model.pdf" },
+      { path: ciSummary, name: "CI_Summary.pdf" },
+    ];
+
+    // Add files to zip
+    for (let file of files) {
+      const response = await fetch(file.path);
+      const blob = await response.blob();
+      zip.file(file.name, blob);
+    }
+
+    // Generate zip file and trigger download
+    zip
+      .generateAsync({ type: "blob" })
+      .then((content) => {
+        saveAs(content, "hw1_g11.zip");
+      })
+      .catch((e) => console.error("Error creating zip file:", e));
+  };
+
   return (
     <main className="relative flex gap-6 px-2 pb-40 pt-20 text-white md:px-40">
       <div className="flex flex-col">
-        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
-          HW1: CI AND MODELS
-        </h1>
+        <div className="flex items-center">
+          <h1 className="mr-auto scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+            HW1: CI AND MODELS
+          </h1>
+          <Button
+            className="w-max bg-green-400 text-[#232323] hover:bg-green-600/90"
+            onClick={handleDownload}
+          >
+            Download
+          </Button>
+        </div>
         <h2
           ref={section1Ref}
           className="mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0"

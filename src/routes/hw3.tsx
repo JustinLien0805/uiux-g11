@@ -2,6 +2,9 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef } from "react";
 import persona from "../assets/persona.png";
+import { Button } from "../components/ui/button";
+import JSZip from "jszip";
+import { saveAs } from "file-saver";
 export const Route = createFileRoute("/hw3")({
   component: HwComponent,
 });
@@ -12,12 +15,42 @@ function HwComponent() {
   const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
+  const handleDownload = async () => {
+    const zip = new JSZip();
+
+    // List of files to add to the zip
+    const file: { path: string; name: string } = {
+      path: persona,
+      name: "persona.jpg",
+    };
+
+    // Add files to zip
+    const response = await fetch(file.path);
+    const blob = await response.blob();
+    zip.file(file.name, blob);
+
+    // Generate zip file and trigger download
+    zip
+      .generateAsync({ type: "blob" })
+      .then((content) => {
+        saveAs(content, "hw3_g11.zip");
+      })
+      .catch((e) => console.error("Error creating zip file:", e));
+  };
   return (
     <main className="relative flex gap-6 px-2 pb-40 pt-20 text-white md:px-40">
       <div className="flex flex-col gap-4">
-        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
-          HW3: PERSONA
-        </h1>
+        <div className="flex items-center">
+          <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mr-auto">
+            HW3: PERSONA
+          </h1>
+          <Button
+            className="w-max bg-green-400 text-[#232323] hover:bg-green-600/90"
+            onClick={handleDownload}
+          >
+            Download
+          </Button>
+        </div>
         <h2
           ref={section1Ref}
           className="mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0"
