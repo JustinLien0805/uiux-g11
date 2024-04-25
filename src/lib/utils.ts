@@ -5,4 +5,4 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export type HwType = "hw1" | "hw2" | "hw3"
+export type HwType = "hw1" | "hw2" | "hw3" | "hw4" 

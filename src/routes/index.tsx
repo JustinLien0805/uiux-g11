@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 
 import { MoveDown } from "lucide-react";
 import { HomeworkCard } from "@/components/homework-card";
+import { HwType } from "@/lib/utils";
 export const Route = createFileRoute("/")({
   component: HomeComponent,
 });
@@ -11,7 +12,7 @@ export const Route = createFileRoute("/")({
 type hwDataType = {
   title: string;
   description: string;
-  hw: "hw1" | "hw2" | "hw3";
+  hw: HwType;
 };
 const hwData: hwDataType[] = [
   {
@@ -25,6 +26,18 @@ const hwData: hwDataType[] = [
     description:
       "Created an affinity diagram through the insights we gathered from the contextual inquiry to identify the pain points and opportunities for improvement.",
     hw: "hw2",
+  },
+  {
+    title: "Persona",
+    description:
+      "Developed a persona based on the insights we gathered from the contextual inquiry to represent the target user group.",
+    hw: "hw3",
+  },
+  {
+    title: "Lo-Fi Prototype",
+    description:
+      "Designed a low-fidelity prototype for the 新安東京海上產險 website",
+    hw: "hw4",
   },
 ];
 function HomeComponent() {

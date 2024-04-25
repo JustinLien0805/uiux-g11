@@ -11,12 +11,18 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as Hw4Import } from './routes/hw4'
 import { Route as Hw3Import } from './routes/hw3'
 import { Route as Hw2Import } from './routes/hw2'
 import { Route as Hw1Import } from './routes/hw1'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
+
+const Hw4Route = Hw4Import.update({
+  path: '/hw4',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const Hw3Route = Hw3Import.update({
   path: '/hw3',
@@ -58,6 +64,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Hw3Import
       parentRoute: typeof rootRoute
     }
+    '/hw4': {
+      preLoaderRoute: typeof Hw4Import
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -68,6 +78,7 @@ export const routeTree = rootRoute.addChildren([
   Hw1Route,
   Hw2Route,
   Hw3Route,
+  Hw4Route,
 ])
 
 /* prettier-ignore-end */

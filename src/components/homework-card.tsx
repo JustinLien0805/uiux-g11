@@ -1,5 +1,6 @@
 import { useNavigate } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
+import { HwType } from "@/lib/utils";
 export const HomeworkCard = ({
   title,
   description,
@@ -7,7 +8,7 @@ export const HomeworkCard = ({
 }: {
   title: string;
   description: string;
-  hw: "hw1" | "hw2" | "hw3";
+  hw: HwType;
 }) => {
   const navigate = useNavigate();
   return (
