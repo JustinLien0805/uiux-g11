@@ -9,7 +9,9 @@ import sketch5 from "../assets/sketch/5.jpg";
 import sketch6 from "../assets/sketch/6.jpg";
 import sketch7 from "../assets/sketch/7.jpg";
 import lofiPdf from "../assets/lofi.pdf";
-import { Button } from "../components/ui/button";
+import revisionplan from "../assets/revisionplan.pdf";
+import { Button } from "@/components/ui/button";
+import { PDFViewer } from "@/components/pdf-reader";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
 import { Link } from "lucide-react";
@@ -43,6 +45,10 @@ function HwComponent() {
       {
         path: lofiPdf,
         name: "lofi.pdf",
+      },
+      {
+        path: revisionplan,
+        name: "revisionplan.pdf",
       },
       ...imgRoutes,
     ];
@@ -105,6 +111,10 @@ function HwComponent() {
             <Link className="ml-2 h-6 w-6" />
           </a>
         </h3>
+        <h2 className="mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
+          Revision Plan
+        </h2>
+        <PDFViewer url={revisionplan} />
       </div>
       <div className="hidden w-60 text-sm text-neutral-300 lg:block">
         <div className="sticky top-16  pt-4">
