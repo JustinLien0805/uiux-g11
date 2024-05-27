@@ -133,6 +133,27 @@ function HwComponent() {
                       Sketch
                     </a>
                   </li>
+
+                  <li className="mt-0 pt-2">
+                    <a
+                      className="inline-block cursor-pointer no-underline transition-colors hover:text-neutral-100"
+                      onClick={() => {
+                        scrollToSection(section1Ref);
+                      }}
+                    >
+                      Lo-fi Prototype
+                    </a>
+                  </li>
+                  <li className="mt-0 pt-2">
+                    <a
+                      className="inline-block cursor-pointer no-underline transition-colors hover:text-neutral-100"
+                      onClick={() => {
+                        scrollToSection(section1Ref);
+                      }}
+                    >
+                      Revision Plan
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>

@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { Button } from "../components/ui/button";
 import { saveAs } from "file-saver";
 import JSZip from "jszip";
-import affinitydiagram from "../assets/affinitydiagram.jpg";
+import affinitydiagram from "../assets/affinitydiagram.png";
 
 export const Route = createFileRoute("/hw2")({
   component: HwComponent,
@@ -23,7 +23,7 @@ function HwComponent() {
     // List of files to add to the zip
     const file: { path: string; name: string } = {
       path: affinitydiagram,
-      name: "affinity_diagram.jpg",
+      name: "affinity_diagram.png",
     };
 
     // Add files to zip
@@ -58,7 +58,7 @@ function HwComponent() {
           ref={section1Ref}
           className="mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0"
         >
-          Persona
+          Affinity Diagram
         </h2>
         <img src={affinitydiagram} alt="affinitydiagram" />
       </div>
@@ -76,7 +76,7 @@ function HwComponent() {
                         scrollToSection(section1Ref);
                       }}
                     >
-                      Persona
+                      Affinity Diagram
                     </a>
                   </li>
                 </ul>
