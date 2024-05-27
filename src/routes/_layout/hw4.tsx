@@ -1,15 +1,15 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef } from "react";
-import sketch1 from "../assets/sketch/1.png";
-import sketch2 from "../assets/sketch/2.png";
-import sketch3 from "../assets/sketch/3.png";
-import sketch4 from "../assets/sketch/4.jpg";
-import sketch5 from "../assets/sketch/5.jpg";
-import sketch6 from "../assets/sketch/6.jpg";
-import sketch7 from "../assets/sketch/7.jpg";
-import lofiPdf from "../assets/lofi.pdf";
-import revisionplan from "../assets/revisionplan.pdf";
+import sketch1 from "../../assets/sketch/1.png";
+import sketch2 from "../../assets/sketch/2.png";
+import sketch3 from "../../assets/sketch/3.png";
+import sketch4 from "../../assets/sketch/4.jpg";
+import sketch5 from "../../assets/sketch/5.jpg";
+import sketch6 from "../../assets/sketch/6.jpg";
+import sketch7 from "../../assets/sketch/7.jpg";
+import lofiPdf from "../../assets/lofi.pdf";
+import revisionplan from "../../assets/revisionplan.pdf";
 import { Button } from "@/components/ui/button";
 import { PDFViewer } from "@/components/pdf-reader";
 import JSZip from "jszip";
@@ -26,7 +26,7 @@ const imgRoutes = [
   { path: sketch4, name: "sketch4.jpg" },
 ];
 
-export const Route = createFileRoute("/hw4")({
+export const Route = createFileRoute("/_layout/hw4")({
   component: HwComponent,
 });
 

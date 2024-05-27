@@ -1,11 +1,12 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef } from "react";
-import persona from "../assets/persona.png";
-import { Button } from "../components/ui/button";
-import JSZip from "jszip";
+import { Button } from "@/components/ui/button";
 import { saveAs } from "file-saver";
-export const Route = createFileRoute("/hw3")({
+import JSZip from "jszip";
+import affinitydiagram from "../../assets/affinitydiagram.png";
+
+export const Route = createFileRoute("/_layout/hw2")({
   component: HwComponent,
 });
 
@@ -15,13 +16,14 @@ function HwComponent() {
   const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
+
   const handleDownload = async () => {
     const zip = new JSZip();
 
     // List of files to add to the zip
     const file: { path: string; name: string } = {
-      path: persona,
-      name: "persona.jpg",
+      path: affinitydiagram,
+      name: "affinity_diagram.png",
     };
 
     // Add files to zip
@@ -33,16 +35,16 @@ function HwComponent() {
     zip
       .generateAsync({ type: "blob" })
       .then((content) => {
-        saveAs(content, "hw3_g11.zip");
+        saveAs(content, "hw2_g11.zip");
       })
       .catch((e) => console.error("Error creating zip file:", e));
   };
   return (
-    <main className="relative flex gap-6 px-2 pb-40 pt-20 text-white md:px-40">
-      <div className="flex flex-col gap-4">
+    <main className="relative flex min-h-screen gap-6 px-2 pb-40 pt-20 text-white md:px-40">
+      <div className="flex w-full flex-col gap-4">
         <div className="flex items-center">
-          <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mr-auto">
-            HW3: PERSONA
+          <h1 className="mr-auto scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+            HW2: AFFINITY DIAGRAM
           </h1>
           <Button
             className="w-max bg-green-400 text-[#232323] hover:bg-green-600/90"
@@ -51,13 +53,14 @@ function HwComponent() {
             Download
           </Button>
         </div>
+
         <h2
           ref={section1Ref}
           className="mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0"
         >
-          Persona
+          Affinity Diagram
         </h2>
-        <img src={persona} alt="persona" />
+        <img src={affinitydiagram} alt="affinitydiagram" />
       </div>
       <div className="hidden w-60 text-sm text-neutral-300 lg:block">
         <div className="sticky top-16  pt-4">
@@ -73,7 +76,7 @@ function HwComponent() {
                         scrollToSection(section1Ref);
                       }}
                     >
-                      Persona
+                      Affinity Diagram
                     </a>
                   </li>
                 </ul>

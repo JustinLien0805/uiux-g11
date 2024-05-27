@@ -4,14 +4,14 @@ import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { PDFViewer } from "@/components/pdf-reader";
 import { Link } from "lucide-react";
-import fm1 from "../assets/fm1.svg";
-import fm2 from "../assets/fm2.svg";
-import textscript from "../assets/textscript.pdf";
-import afUrl from "../assets/af.pdf";
-import ciSummary from "../assets/CI_Summary.pdf";
+import fm1 from "../../assets/fm1.svg";
+import fm2 from "../../assets/fm2.svg";
+import textscript from "../../assets/textscript.pdf";
+import afUrl from "../../assets/af.pdf";
+import ciSummary from "../../assets/CI_Summary.pdf";
 import { saveAs } from "file-saver";
 import JSZip from "jszip";
-export const Route = createFileRoute("/hw1")({
+export const Route = createFileRoute("/_layout/hw1")({
   component: HwComponent,
 });
 

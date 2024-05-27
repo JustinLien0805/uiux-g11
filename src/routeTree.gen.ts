@@ -11,37 +11,49 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as Hw4Import } from './routes/hw4'
-import { Route as Hw3Import } from './routes/hw3'
-import { Route as Hw2Import } from './routes/hw2'
-import { Route as Hw1Import } from './routes/hw1'
+import { Route as HiFiImport } from './routes/hi-fi'
+import { Route as LayoutImport } from './routes/_layout'
 import { Route as IndexImport } from './routes/index'
+import { Route as LayoutHw4Import } from './routes/_layout/hw4'
+import { Route as LayoutHw3Import } from './routes/_layout/hw3'
+import { Route as LayoutHw2Import } from './routes/_layout/hw2'
+import { Route as LayoutHw1Import } from './routes/_layout/hw1'
 
 // Create/Update Routes
 
-const Hw4Route = Hw4Import.update({
-  path: '/hw4',
+const HiFiRoute = HiFiImport.update({
+  path: '/hi-fi',
   getParentRoute: () => rootRoute,
 } as any)
 
-const Hw3Route = Hw3Import.update({
-  path: '/hw3',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const Hw2Route = Hw2Import.update({
-  path: '/hw2',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const Hw1Route = Hw1Import.update({
-  path: '/hw1',
+const LayoutRoute = LayoutImport.update({
+  id: '/_layout',
   getParentRoute: () => rootRoute,
 } as any)
 
 const IndexRoute = IndexImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
+} as any)
+
+const LayoutHw4Route = LayoutHw4Import.update({
+  path: '/hw4',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutHw3Route = LayoutHw3Import.update({
+  path: '/hw3',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutHw2Route = LayoutHw2Import.update({
+  path: '/hw2',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutHw1Route = LayoutHw1Import.update({
+  path: '/hw1',
+  getParentRoute: () => LayoutRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -52,21 +64,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/hw1': {
-      preLoaderRoute: typeof Hw1Import
+    '/_layout': {
+      preLoaderRoute: typeof LayoutImport
       parentRoute: typeof rootRoute
     }
-    '/hw2': {
-      preLoaderRoute: typeof Hw2Import
+    '/hi-fi': {
+      preLoaderRoute: typeof HiFiImport
       parentRoute: typeof rootRoute
     }
-    '/hw3': {
-      preLoaderRoute: typeof Hw3Import
-      parentRoute: typeof rootRoute
+    '/_layout/hw1': {
+      preLoaderRoute: typeof LayoutHw1Import
+      parentRoute: typeof LayoutImport
     }
-    '/hw4': {
-      preLoaderRoute: typeof Hw4Import
-      parentRoute: typeof rootRoute
+    '/_layout/hw2': {
+      preLoaderRoute: typeof LayoutHw2Import
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/hw3': {
+      preLoaderRoute: typeof LayoutHw3Import
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/hw4': {
+      preLoaderRoute: typeof LayoutHw4Import
+      parentRoute: typeof LayoutImport
     }
   }
 }
@@ -75,10 +95,13 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   IndexRoute,
-  Hw1Route,
-  Hw2Route,
-  Hw3Route,
-  Hw4Route,
+  LayoutRoute.addChildren([
+    LayoutHw1Route,
+    LayoutHw2Route,
+    LayoutHw3Route,
+    LayoutHw4Route,
+  ]),
+  HiFiRoute,
 ])
 
 /* prettier-ignore-end */
