@@ -11,23 +11,31 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as HiFiImport } from './routes/hi-fi'
 import { Route as LayoutImport } from './routes/_layout'
+import { Route as HiFiImport } from './routes/_hi-fi'
 import { Route as IndexImport } from './routes/index'
 import { Route as LayoutHw4Import } from './routes/_layout/hw4'
 import { Route as LayoutHw3Import } from './routes/_layout/hw3'
 import { Route as LayoutHw2Import } from './routes/_layout/hw2'
 import { Route as LayoutHw1Import } from './routes/_layout/hw1'
+import { Route as HiFiVerifyImport } from './routes/_hi-fi/verify'
+import { Route as HiFiStep5Import } from './routes/_hi-fi/step-5'
+import { Route as HiFiStep3Import } from './routes/_hi-fi/step-3'
+import { Route as HiFiStep2Import } from './routes/_hi-fi/step-2'
+import { Route as HiFiStep11Import } from './routes/_hi-fi/step-1-1'
+import { Route as HiFiStep1Import } from './routes/_hi-fi/step-1'
+import { Route as HiFiSignUpImport } from './routes/_hi-fi/sign-up'
+import { Route as HiFiLoginImport } from './routes/_hi-fi/login'
 
 // Create/Update Routes
 
-const HiFiRoute = HiFiImport.update({
-  path: '/hi-fi',
+const LayoutRoute = LayoutImport.update({
+  id: '/_layout',
   getParentRoute: () => rootRoute,
 } as any)
 
-const LayoutRoute = LayoutImport.update({
-  id: '/_layout',
+const HiFiRoute = HiFiImport.update({
+  id: '/_hi-fi',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -56,6 +64,46 @@ const LayoutHw1Route = LayoutHw1Import.update({
   getParentRoute: () => LayoutRoute,
 } as any)
 
+const HiFiVerifyRoute = HiFiVerifyImport.update({
+  path: '/verify',
+  getParentRoute: () => HiFiRoute,
+} as any)
+
+const HiFiStep5Route = HiFiStep5Import.update({
+  path: '/step-5',
+  getParentRoute: () => HiFiRoute,
+} as any)
+
+const HiFiStep3Route = HiFiStep3Import.update({
+  path: '/step-3',
+  getParentRoute: () => HiFiRoute,
+} as any)
+
+const HiFiStep2Route = HiFiStep2Import.update({
+  path: '/step-2',
+  getParentRoute: () => HiFiRoute,
+} as any)
+
+const HiFiStep11Route = HiFiStep11Import.update({
+  path: '/step-1-1',
+  getParentRoute: () => HiFiRoute,
+} as any)
+
+const HiFiStep1Route = HiFiStep1Import.update({
+  path: '/step-1',
+  getParentRoute: () => HiFiRoute,
+} as any)
+
+const HiFiSignUpRoute = HiFiSignUpImport.update({
+  path: '/sign-up',
+  getParentRoute: () => HiFiRoute,
+} as any)
+
+const HiFiLoginRoute = HiFiLoginImport.update({
+  path: '/login',
+  getParentRoute: () => HiFiRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -64,13 +112,45 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/_hi-fi': {
+      preLoaderRoute: typeof HiFiImport
+      parentRoute: typeof rootRoute
+    }
     '/_layout': {
       preLoaderRoute: typeof LayoutImport
       parentRoute: typeof rootRoute
     }
-    '/hi-fi': {
-      preLoaderRoute: typeof HiFiImport
-      parentRoute: typeof rootRoute
+    '/_hi-fi/login': {
+      preLoaderRoute: typeof HiFiLoginImport
+      parentRoute: typeof HiFiImport
+    }
+    '/_hi-fi/sign-up': {
+      preLoaderRoute: typeof HiFiSignUpImport
+      parentRoute: typeof HiFiImport
+    }
+    '/_hi-fi/step-1': {
+      preLoaderRoute: typeof HiFiStep1Import
+      parentRoute: typeof HiFiImport
+    }
+    '/_hi-fi/step-1-1': {
+      preLoaderRoute: typeof HiFiStep11Import
+      parentRoute: typeof HiFiImport
+    }
+    '/_hi-fi/step-2': {
+      preLoaderRoute: typeof HiFiStep2Import
+      parentRoute: typeof HiFiImport
+    }
+    '/_hi-fi/step-3': {
+      preLoaderRoute: typeof HiFiStep3Import
+      parentRoute: typeof HiFiImport
+    }
+    '/_hi-fi/step-5': {
+      preLoaderRoute: typeof HiFiStep5Import
+      parentRoute: typeof HiFiImport
+    }
+    '/_hi-fi/verify': {
+      preLoaderRoute: typeof HiFiVerifyImport
+      parentRoute: typeof HiFiImport
     }
     '/_layout/hw1': {
       preLoaderRoute: typeof LayoutHw1Import
@@ -95,13 +175,22 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   IndexRoute,
+  HiFiRoute.addChildren([
+    HiFiLoginRoute,
+    HiFiSignUpRoute,
+    HiFiStep1Route,
+    HiFiStep11Route,
+    HiFiStep2Route,
+    HiFiStep3Route,
+    HiFiStep5Route,
+    HiFiVerifyRoute,
+  ]),
   LayoutRoute.addChildren([
     LayoutHw1Route,
     LayoutHw2Route,
     LayoutHw3Route,
     LayoutHw4Route,
   ]),
-  HiFiRoute,
 ])
 
 /* prettier-ignore-end */
