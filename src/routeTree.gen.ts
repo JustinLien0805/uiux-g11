@@ -20,6 +20,7 @@ import { Route as LayoutHw2Import } from './routes/_layout/hw2'
 import { Route as LayoutHw1Import } from './routes/_layout/hw1'
 import { Route as HiFiVerifyImport } from './routes/_hi-fi/verify'
 import { Route as HiFiStep5Import } from './routes/_hi-fi/step-5'
+import { Route as HiFiStep4Import } from './routes/_hi-fi/step-4'
 import { Route as HiFiStep3Import } from './routes/_hi-fi/step-3'
 import { Route as HiFiStep2Import } from './routes/_hi-fi/step-2'
 import { Route as HiFiStep11Import } from './routes/_hi-fi/step-1-1'
@@ -71,6 +72,11 @@ const HiFiVerifyRoute = HiFiVerifyImport.update({
 
 const HiFiStep5Route = HiFiStep5Import.update({
   path: '/step-5',
+  getParentRoute: () => HiFiRoute,
+} as any)
+
+const HiFiStep4Route = HiFiStep4Import.update({
+  path: '/step-4',
   getParentRoute: () => HiFiRoute,
 } as any)
 
@@ -144,6 +150,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HiFiStep3Import
       parentRoute: typeof HiFiImport
     }
+    '/_hi-fi/step-4': {
+      preLoaderRoute: typeof HiFiStep4Import
+      parentRoute: typeof HiFiImport
+    }
     '/_hi-fi/step-5': {
       preLoaderRoute: typeof HiFiStep5Import
       parentRoute: typeof HiFiImport
@@ -182,6 +192,7 @@ export const routeTree = rootRoute.addChildren([
     HiFiStep11Route,
     HiFiStep2Route,
     HiFiStep3Route,
+    HiFiStep4Route,
     HiFiStep5Route,
     HiFiVerifyRoute,
   ]),

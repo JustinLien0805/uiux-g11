@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-
+import { useNavigate } from "@tanstack/react-router";
 export const Route = createFileRoute("/_hi-fi/step-3")({
   component: HifiComponent,
 });
@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/select";
 
 function HifiComponent() {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col gap-6 p-4">
       <h2 className="text-center text-lg font-bold">線上投保注意事項</h2>
@@ -130,7 +131,16 @@ function HifiComponent() {
       </div>
       <div className="flex gap-4">
         <Button className="w-full">返回</Button>
-        <Button className="w-full">確認</Button>
+        <Button
+          className="w-full"
+          onClick={() => {
+            navigate({
+              to: "/step-4",
+            });
+          }}
+        >
+          確認
+        </Button>
       </div>
     </div>
   );
