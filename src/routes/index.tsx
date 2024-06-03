@@ -57,24 +57,25 @@ function HomeComponent() {
             新安東京海上產險
           </h1>
           <div className="flex gap-4">
-          <Button
-            className="w-max bg-green-400 text-[#232323] hover:bg-green-600/90"
-            onClick={scrollToSection}
-          >
-            Explore
-            <ArrowDown className="ml-2 h-6 w-6 animate-bounce" />
-          </Button>
-          <Button
-            className="w-max bg-green-400 text-[#232323] hover:bg-green-600/90"
-            onClick={()=>{
-              navigate({
-                to: "/step-1",
-              });
-            }}
-          >
-            Hifi
-            <ArrowDown className="ml-2 h-6 w-6 animate-bounce" />
-          </Button></div>
+            <Button
+              className="w-max bg-green-400 text-[#232323] hover:bg-green-600/90"
+              onClick={scrollToSection}
+            >
+              Explore
+              <ArrowDown className="ml-2 h-6 w-6 animate-bounce" />
+            </Button>
+            <Button
+              className="w-max bg-green-400 text-[#232323] hover:bg-green-600/90"
+              onClick={() => {
+                navigate({
+                  to: "/hi-fi/step-1",
+                });
+              }}
+            >
+              Hifi
+              <ArrowDown className="ml-2 h-6 w-6 animate-bounce" />
+            </Button>
+          </div>
         </section>
       </div>
       <section

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useNavigate } from "@tanstack/react-router";
-export const Route = createFileRoute("/_hi-fi/login")({
+export const Route = createFileRoute("/hi-fi/_hi-fi/login")({
   component: LoginComponent,
 });
 
@@ -40,7 +40,7 @@ function LoginComponent() {
           <Button
             className="w-full"
             onClick={() => {
-              navigate({ to: "/verify" });
+              navigate({ to: "/hi-fi/verify" });
             }}
           >
             登入

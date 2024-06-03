@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useNavigate } from "@tanstack/react-router";
-export const Route = createFileRoute("/_hi-fi/step-3")({
+export const Route = createFileRoute("/hi-fi/_hi-fi/step-3")({
   component: HifiComponent,
 });
 
@@ -135,7 +135,7 @@ function HifiComponent() {
           className="w-full"
           onClick={() => {
             navigate({
-              to: "/step-4",
+              to: "/hi-fi/step-4",
             });
           }}
         >

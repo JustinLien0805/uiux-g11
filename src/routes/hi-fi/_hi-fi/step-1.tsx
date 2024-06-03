@@ -31,7 +31,7 @@ import {
 } from "@/components/ui/dialog";
 import { CircleAlert } from "lucide-react";
 import { useState } from "react";
-export const Route = createFileRoute("/_hi-fi/step-1")({
+export const Route = createFileRoute("/hi-fi/_hi-fi/step-1")({
   component: HifiComponent,
 });
 
@@ -201,7 +201,7 @@ function HifiComponent() {
                   type="button"
                   onClick={() => {
                     navigate({
-                      to: "/step-1-1",
+                      to: "/hi-fi/step-1-1",
                     });
                   }}
                 >

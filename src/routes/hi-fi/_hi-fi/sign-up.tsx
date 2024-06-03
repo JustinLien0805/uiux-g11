@@ -7,7 +7,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { useState, useEffect, useRef } from "react";
 import { ArrowDown } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
-export const Route = createFileRoute("/_hi-fi/sign-up")({
+export const Route = createFileRoute("/hi-fi/_hi-fi/sign-up")({
   component: HifiComponent,
 });
 
@@ -122,7 +122,7 @@ function HifiComponent() {
           className="w-full rounded text-center font-bold"
           onClick={() => {
             navigate({
-              to: "/verify",
+              to: "/hi-fi/verify",
             });
           }}
         >

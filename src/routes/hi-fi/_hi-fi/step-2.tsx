@@ -16,7 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-export const Route = createFileRoute("/_hi-fi/step-4")({
+export const Route = createFileRoute("/hi-fi/_hi-fi/step-2")({
   component: HifiComponent,
 });
 
@@ -348,7 +348,7 @@ function HifiComponent() {
             className="w-full rounded text-center font-bold"
             onClick={() => {
               navigate({
-                to: "/step-5",
+                to: "/hi-fi/step-3",
               });
             }}
           >

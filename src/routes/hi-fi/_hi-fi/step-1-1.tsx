@@ -21,9 +21,9 @@ import { InsuranceAccordion } from "@/components/insurance-accordion";
 import { BarChart3, CircleHelp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { INSURANCE_CASE } from "@/lib/const";
-import graph1 from "../../assets/graph1.png";
-import graph2 from "../../assets/graph2.png";
-export const Route = createFileRoute("/_hi-fi/step-1-1")({
+import graph1 from "../../../assets/graph1.png";
+import graph2 from "../../../assets/graph2.png";
+export const Route = createFileRoute("/hi-fi/_hi-fi/step-1-1")({
   component: HifiComponent,
 });
 
@@ -153,7 +153,7 @@ function HifiComponent() {
             className="ml-2 w-1/2 p-2 text-lg"
             onClick={() => {
               navigate({
-                to: "/sign-up",
+                to: "/hi-fi/sign-up",
               });
             }}
           >

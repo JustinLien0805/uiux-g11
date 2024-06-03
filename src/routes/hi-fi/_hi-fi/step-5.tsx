@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Webcam from "react-webcam";
-export const Route = createFileRoute("/_hi-fi/step-5")({
+export const Route = createFileRoute("/hi-fi/_hi-fi/step-5")({
   component: HifiComponent,
 });
 import { Button } from "@/components/ui/button";

@@ -1,32 +1,47 @@
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/_hi-fi")({
+export const Route = createFileRoute("/hi-fi/_hi-fi")({
   component: HwComponent,
 });
 
 function HwComponent() {
   return (
-    <div className="min-h-screen relative bg-[#f3f3f3]">
+    <div className="relative min-h-screen bg-[#f3f3f3]">
       <header className="mb-2">
         <h2 className="scroll-m-20 border-b p-2 text-center text-2xl font-semibold tracking-tight first:mt-0">
           新安東京海上產險
         </h2>
       </header>
       <div className="flex w-full justify-between p-4">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full border text-xl">
-          1
+        <div className="flex flex-col gap-2 items-center">
+          <div className="flex h-16 w-16 items-center justify-center rounded-full border text-xl">
+            1
+          </div>
+          <div>保費試算</div>
         </div>
-        <div className="flex h-16 w-16 items-center justify-center rounded-full border text-xl">
-          2
+        <div className="flex flex-col gap-2 items-center">
+          <div className="flex h-16 w-16 items-center justify-center rounded-full border text-xl">
+            2
+          </div>
+          <div>填寫資料</div>
         </div>
-        <div className="flex h-16 w-16 items-center justify-center rounded-full border text-xl">
-          3
+        <div className="flex flex-col gap-2 items-center">
+          <div className="flex h-16 w-16 items-center justify-center rounded-full border text-xl">
+            3
+          </div>
+          <div>注意事項</div>
         </div>
-        <div className="flex h-16 w-16 items-center justify-center rounded-full border text-xl">
-          4
+        <div className="flex flex-col gap-2 items-center">
+          <div className="flex h-16 w-16 items-center justify-center rounded-full border text-xl">
+            4
+          </div>
+          <div>確認資料</div>
         </div>
-        <div className="flex h-16 w-16 items-center justify-center rounded-full border text-xl">
-          5
+        <div className="flex flex-col gap-2 items-center">
+          <div className="flex h-16 w-16 items-center justify-center rounded-full border text-xl">
+            5
+          </div>
+          <div>繳費</div>
         </div>
       </div>
       <Outlet />
@@ -60,7 +75,6 @@ function HwComponent() {
           建議瀏覽器：Chrome10、Safari16、Edge109以上版本
         </h4>
       </footer>
-  
     </div>
   );
 }

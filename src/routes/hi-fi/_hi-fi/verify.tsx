@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useNavigate } from "@tanstack/react-router";
-export const Route = createFileRoute("/_hi-fi/verify")({
+export const Route = createFileRoute("/hi-fi/_hi-fi/verify")({
   component: VerifyComponent,
 });
 import {
@@ -41,7 +41,7 @@ function VerifyComponent() {
             className="w-full"
             onClick={() => {
               navigate({
-                to: "/step-2",
+                to: "/hi-fi/step-2",
               });
             }}
           >
@@ -51,7 +51,7 @@ function VerifyComponent() {
             className="w-full"
             onClick={() => {
               navigate({
-                to: "/step-2",
+                to: "/hi-fi/step-2",
               });
             }}
           >
