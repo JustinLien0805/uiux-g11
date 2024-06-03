@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-
-import { MoveDown } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { HomeworkCard } from "@/components/homework-card";
 import { HwType } from "@/lib/utils";
 export const Route = createFileRoute("/")({
@@ -42,7 +42,7 @@ const hwData: hwDataType[] = [
 ];
 function HomeComponent() {
   const targetSectionRef = useRef<HTMLDivElement>(null);
-
+  const navigate = useNavigate();
   const scrollToSection = (): void => {
     targetSectionRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -56,13 +56,25 @@ function HomeComponent() {
           <h1 className="scroll-m-20 text-4xl font-extrabold tracking-wide text-white md:text-7xl">
             新安東京海上產險
           </h1>
+          <div className="flex gap-4">
           <Button
             className="w-max bg-green-400 text-[#232323] hover:bg-green-600/90"
             onClick={scrollToSection}
           >
             Explore
-            <MoveDown className="ml-2 h-6 w-6 animate-bounce" />
+            <ArrowDown className="ml-2 h-6 w-6 animate-bounce" />
           </Button>
+          <Button
+            className="w-max bg-green-400 text-[#232323] hover:bg-green-600/90"
+            onClick={()=>{
+              navigate({
+                to: "/step-1",
+              });
+            }}
+          >
+            Hifi
+            <ArrowDown className="ml-2 h-6 w-6 animate-bounce" />
+          </Button></div>
         </section>
       </div>
       <section

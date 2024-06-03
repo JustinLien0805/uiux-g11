@@ -36,7 +36,7 @@ function VerifyComponent() {
           </form>
           <p className="mb-4 text-center">剩餘時間 2:55</p>
         </CardContent>
-        <CardFooter className="flex gap-4">
+        <CardFooter className="flex flex-col gap-4">
           <Button
             className="w-full"
             onClick={() => {
@@ -46,6 +46,16 @@ function VerifyComponent() {
             }}
           >
             確定
+          </Button>
+          <Button
+            className="w-full"
+            onClick={() => {
+              navigate({
+                to: "/step-2",
+              });
+            }}
+          >
+            重新發送
           </Button>
         </CardFooter>
       </Card>
