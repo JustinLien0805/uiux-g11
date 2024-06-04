@@ -21,27 +21,29 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Apple, ScanText } from "lucide-react";
-import { useState, useRef, useCallback } from "react";
+import { Apple, Camera } from "lucide-react";
+import { useState, useRef } from "react";
 
 function HifiComponent() {
   const [showCamera, setShowCamera] = useState<boolean>(false);
   const webcamRef = useRef<Webcam>(null);
-  const capture = useCallback(() => {
-    const imageSrc = webcamRef.current?.getScreenshot();
-  }, [webcamRef]);
+  // const capture = useCallback(() => {
+  //   const imageSrc = webcamRef.current?.getScreenshot();
+  // }, [webcamRef]);
   return (
     <div className="rounded-lg p-4">
       <h2 className="mb-4 text-center text-xl font-bold">繳費</h2>
       <Card>
         <CardHeader className="gap-6">
-          <CardTitle>繳費資料</CardTitle>
+          <CardTitle className="border-l-4 border-blue-600 pl-2 font-semibold text-blue-600">繳費資料</CardTitle>
           <p className="">總保費：$〇〇〇</p>
           <p className="">付款人姓名：〇〇〇</p>
           <p className="">身分證字號：〇〇〇〇〇〇〇〇〇〇</p>
         </CardHeader>
         <CardHeader>
-          <CardTitle>繳費方式</CardTitle>
+          <CardTitle className="border-l-4 border-blue-600 pl-2 font-semibold text-blue-600">
+            繳費方式
+          </CardTitle>
         </CardHeader>
         <CardContent className="grid gap-6">
           <RadioGroup defaultValue="card" className="grid grid-cols-3 gap-4">
@@ -49,7 +51,7 @@ function HifiComponent() {
               <RadioGroupItem value="card" id="card" className="peer sr-only" />
               <Label
                 htmlFor="card"
-                className="border-muted bg-popover hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary flex flex-col items-center justify-between rounded-md border-2 p-4"
+                className="border-muted bg-popover hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-blue-600 [&:has([data-state=checked])]:border-blue-600 flex flex-col items-center justify-between rounded-md border-2 p-4"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +77,7 @@ function HifiComponent() {
               />
               <Label
                 htmlFor="paypal"
-                className="border-muted bg-popover hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary flex flex-col items-center justify-between rounded-md border-2 px-2 py-4"
+                className="border-muted bg-popover hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-blue-600 [&:has([data-state=checked])]:border-blue-600 flex flex-col items-center justify-between rounded-md border-2 px-2 py-4"
               >
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/4/42/Line_pay_logo.svg"
@@ -93,7 +95,7 @@ function HifiComponent() {
               />
               <Label
                 htmlFor="apple"
-                className="border-muted bg-popover hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary flex flex-col items-center justify-between rounded-md border-2 p-4"
+                className="border-muted bg-popover hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-blue-600 [&:has([data-state=checked])]:border-blue-600 flex flex-col items-center justify-between rounded-md border-2 p-4"
               >
                 <Apple className="mb-3 h-6 w-6" />
                 Apple
@@ -112,7 +114,7 @@ function HifiComponent() {
                 <Button
                   className="w-full"
                   onClick={() => {
-                    capture();
+                    // capture();
                     setShowCamera(false);
                   }}
                 >
@@ -132,7 +134,7 @@ function HifiComponent() {
           <div className="grid gap-2">
             <Label htmlFor="number" className="flex items-center gap-2">
               卡號{" "}
-              <ScanText
+              <Camera
                 onClick={() => {
                   setShowCamera(true);
                 }}
@@ -184,11 +186,11 @@ function HifiComponent() {
           </div>
           <div className="grid gap-2">
             <Label htmlFor="cvc">安全碼</Label>
-            <Input id="cvc" placeholder="CVC" />
+            <Input id="cvc" placeholder="CVC" type="password" />
           </div>
         </CardContent>
         <CardFooter>
-          <Button className="w-full">確認</Button>
+          <Button className="w-full bg-blue-600">確認</Button>
         </CardFooter>
       </Card>
     </div>

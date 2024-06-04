@@ -19,7 +19,7 @@ function LoginComponent() {
   const navigate = useNavigate();
   return (
     <div className="mt-20 flex items-center justify-center">
-      <Card className="w-[350px]">
+      <Card className="w-[350px] shadow-md">
         <CardHeader>
           <CardTitle>會員登入</CardTitle>
         </CardHeader>
@@ -33,20 +33,30 @@ function LoginComponent() {
             </div>
           </form>
         </CardContent>
-        <CardFooter className="flex gap-4">
-          <Button variant="outline" className="w-full">
-            返回
-          </Button>
+        <CardFooter className="flex flex-col gap-4">
+          <div className="flex w-full gap-4">
+            <Button variant="outline" className="w-full">
+              返回
+            </Button>
+            <Button
+              className="w-full bg-blue-600"
+              onClick={() => {
+                navigate({ to: "/hi-fi/verify" });
+              }}
+            >
+              登入
+            </Button>
+          </div>
           <Button
-            className="w-full"
+            variant="link"
+            className="mb-4 justify-self-center text-center underline"
             onClick={() => {
-              navigate({ to: "/hi-fi/verify" });
+              navigate({ to: "/hi-fi/sign-up" });
             }}
           >
-            登入
+            還不是會員嗎？ 立即註冊
           </Button>
         </CardFooter>
-        <p className="mb-4 text-center">還不是會員嗎？ 立即註冊</p>
       </Card>
     </div>
   );

@@ -34,21 +34,21 @@ function VerifyComponent() {
               </div>
             </div>
           </form>
-          <p className="mb-4 text-center">剩餘時間 2:55</p>
+          <p className="text-center">剩餘時間 2:55</p>
         </CardContent>
         <CardFooter className="flex flex-col gap-4">
           <Button
-            className="w-full"
+            className="w-full bg-blue-600"
             onClick={() => {
               navigate({
                 to: "/hi-fi/step-2",
               });
             }}
           >
-            確定
+            驗證
           </Button>
           <Button
-            className="w-full"
+            className="w-full text-black bg-amber-400"
             onClick={() => {
               navigate({
                 to: "/hi-fi/step-2",

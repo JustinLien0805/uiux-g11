@@ -14,12 +14,13 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as LayoutImport } from './routes/_layout'
-import { Route as IndexImport } from './routes/index'
+import { Route as LayoutIndexImport } from './routes/_layout/index'
 import { Route as HiFiHiFiImport } from './routes/hi-fi/_hi-fi'
 import { Route as LayoutHw4Import } from './routes/_layout/hw4'
 import { Route as LayoutHw3Import } from './routes/_layout/hw3'
 import { Route as LayoutHw2Import } from './routes/_layout/hw2'
 import { Route as LayoutHw1Import } from './routes/_layout/hw1'
+import { Route as LayoutFinalImport } from './routes/_layout/final'
 import { Route as HiFiHiFiVerifyImport } from './routes/hi-fi/_hi-fi/verify'
 import { Route as HiFiHiFiStep5Import } from './routes/hi-fi/_hi-fi/step-5'
 import { Route as HiFiHiFiStep4Import } from './routes/hi-fi/_hi-fi/step-4'
@@ -46,9 +47,9 @@ const LayoutRoute = LayoutImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const IndexRoute = IndexImport.update({
+const LayoutIndexRoute = LayoutIndexImport.update({
   path: '/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => LayoutRoute,
 } as any)
 
 const HiFiHiFiRoute = HiFiHiFiImport.update({
@@ -73,6 +74,11 @@ const LayoutHw2Route = LayoutHw2Import.update({
 
 const LayoutHw1Route = LayoutHw1Import.update({
   path: '/hw1',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutFinalRoute = LayoutFinalImport.update({
+  path: '/final',
   getParentRoute: () => LayoutRoute,
 } as any)
 
@@ -125,13 +131,13 @@ const HiFiHiFiLoginRoute = HiFiHiFiLoginImport.update({
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
     '/_layout': {
       preLoaderRoute: typeof LayoutImport
       parentRoute: typeof rootRoute
+    }
+    '/_layout/final': {
+      preLoaderRoute: typeof LayoutFinalImport
+      parentRoute: typeof LayoutImport
     }
     '/_layout/hw1': {
       preLoaderRoute: typeof LayoutHw1Import
@@ -156,6 +162,10 @@ declare module '@tanstack/react-router' {
     '/hi-fi/_hi-fi': {
       preLoaderRoute: typeof HiFiHiFiImport
       parentRoute: typeof HiFiRoute
+    }
+    '/_layout/': {
+      preLoaderRoute: typeof LayoutIndexImport
+      parentRoute: typeof LayoutImport
     }
     '/hi-fi/_hi-fi/login': {
       preLoaderRoute: typeof HiFiHiFiLoginImport
@@ -199,12 +209,13 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export const routeTree = rootRoute.addChildren([
-  IndexRoute,
   LayoutRoute.addChildren([
+    LayoutFinalRoute,
     LayoutHw1Route,
     LayoutHw2Route,
     LayoutHw3Route,
     LayoutHw4Route,
+    LayoutIndexRoute,
   ]),
   HiFiRoute.addChildren([
     HiFiHiFiRoute.addChildren([

@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/select";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
@@ -23,24 +24,36 @@ import { Button } from "@/components/ui/button";
 import { INSURANCE_CASE } from "@/lib/const";
 import graph1 from "../../../assets/graph1.png";
 import graph2 from "../../../assets/graph2.png";
+import example from "../../../assets/example.png";
+import { useState } from "react";
 export const Route = createFileRoute("/hi-fi/_hi-fi/step-1-1")({
   component: HifiComponent,
 });
 
 function HifiComponent() {
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+  const openExample = () => {
+    setIsOpen(true);
+  };
   return (
     <>
-      <div className="flex flex-col px-4 pt-8">
-        <h2 className="text-lg font-bold">線上投保注意事項</h2>
-        <p>旅遊國家: 日本</p>
-        <p>旅遊期間: 2024-05-01 23:00 ~ 2024-05-18 23:00，共17天</p>
-
-        <div className="mt-4 flex flex-col gap-4">
-          <label className="mb-2 block font-bold">選擇旅平險保障</label>
+      <div className="flex flex-col gap-6 px-4 pt-8">
+        <h2 className="text-center text-xl font-bold">線上投保注意事項</h2>
+        <div className="space-y-2 rounded-lg bg-white px-4 py-3 shadow-md">
+          <h2 className="border-l-4 border-blue-600 pl-2 text-lg font-semibold text-blue-600">
+            旅遊行程
+          </h2>
+          <p>旅遊國家: 日本</p>
+          <p>旅遊期間: 2024-05-01 23:00 ~ 2024-05-18 23:00，共17天</p>
+        </div>
+        <div className="space-y-4 rounded-lg bg-white px-4 py-3 shadow-md">
+          <h2 className="border-l-4 border-blue-600 pl-2 text-lg font-semibold text-blue-600">
+            選擇旅平險保障
+          </h2>
           <Dialog>
             <DialogTrigger asChild>
-              <Button className="mb-2 w-full p-2 text-sm">
+              <Button className="mb-2 w-full bg-amber-400 p-2 text-sm text-black">
                 <BarChart3 className="mr-2" />
                 不知道多少保費適合你嗎?
               </Button>
@@ -63,7 +76,11 @@ function HifiComponent() {
 
           <div className="mb-4">
             <label className="mb-2 flex items-center">
-              意外死亡及失能 <CircleHelp className="ml-2" />
+              意外死亡及失能{" "}
+              <CircleHelp
+                onClick={openExample}
+                className="ml-2 text-orange-500"
+              />
             </label>
             <Select defaultValue="1000">
               <SelectTrigger>
@@ -84,7 +101,11 @@ function HifiComponent() {
 
           <div className="mb-4">
             <label className="mb-2 flex items-center">
-              傷害醫療 <CircleHelp className="ml-2" />
+              傷害醫療{" "}
+              <CircleHelp
+                onClick={openExample}
+                className="ml-2 text-orange-500"
+              />
             </label>
             <Select defaultValue="100">
               <SelectTrigger>
@@ -105,7 +126,10 @@ function HifiComponent() {
           <div className="mb-4">
             <label className="mb-2 flex items-center">
               個人賠償責任 (每一事故自付額2500元)
-              <CircleHelp className="ml-2" />
+              <CircleHelp
+                onClick={openExample}
+                className="ml-2 text-orange-500"
+              />
             </label>
             <Input
               disabled
@@ -115,11 +139,13 @@ function HifiComponent() {
           </div>
         </div>
 
-        <div className="mt-4 flex flex-col gap-4">
-          <label className="mb-2 block font-bold">選擇旅遊不便險方案</label>
+        <div className="flex flex-col gap-4 rounded-lg bg-white px-4 py-3 shadow-md">
+          <h2 className="border-l-4 border-blue-600 pl-2 text-lg font-semibold text-blue-600">
+            選擇旅遊不便險方案
+          </h2>
           <Dialog>
             <DialogTrigger asChild>
-              <Button className="mb-2 w-full p-2 text-sm">
+              <Button className="mb-2 w-full bg-amber-400 p-2 text-sm text-black">
                 <BarChart3 className="mr-2" />
                 不知道什麼方案適合你嗎?
               </Button>
@@ -140,20 +166,21 @@ function HifiComponent() {
                 key={index}
                 insuranceCase={insuranceCase}
                 isPlan={index === 0}
+                openExample={openExample}
               />
             ))}
           </div>
         </div>
 
         <div className="mt-6 flex justify-between">
-          <Button className="mr-2 w-1/2 p-2 text-lg" variant="secondary">
+          <Button className="mr-2 w-1/2 p-2 text-lg" variant="outline">
             返回
           </Button>
           <Button
-            className="ml-2 w-1/2 p-2 text-lg"
+            className="ml-2 w-1/2 bg-blue-600 p-2 text-lg"
             onClick={() => {
               navigate({
-                to: "/hi-fi/sign-up",
+                to: "/hi-fi/login",
               });
             }}
           >
@@ -162,8 +189,18 @@ function HifiComponent() {
         </div>
       </div>
       <div className="fixed bottom-0 left-0 w-full bg-blue-500 p-4 text-center text-white">
-        總計保費：NT$ 1,500/1 人
+        總計保費：NT$ 1,500 / 1 人
       </div>
+      <Dialog
+        open={isOpen}
+        onOpenChange={() => {
+          setIsOpen(!isOpen);
+        }}
+      >
+        <DialogContent className="w-96 rounded-md">
+          <img src={example} />
+        </DialogContent>
+      </Dialog>
     </>
   );
 }

@@ -43,12 +43,11 @@ function HifiComponent() {
   return (
     <div className="p-4">
       <h2 className="mb-4 text-center text-xl font-bold">會員註冊</h2>
-      <div className="mb-4 flex justify-center">
-        <i className="fas fa-camera"></i>
-      </div>
-
       <form className="flex flex-col gap-6">
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 rounded-lg bg-white p-4 shadow-md">
+          <h3 className="border-l-4 border-blue-600 pl-2 text-xl font-semibold text-blue-600">
+            註冊資料
+          </h3>
           <div>
             <Label className="mb-1 block">身分證號 *</Label>
             <Input type="text" className="w-full border p-2" />
@@ -67,19 +66,21 @@ function HifiComponent() {
           </div>
         </div>
 
-        <h3 className="text-lg font-bold">同意聲明告知事項</h3>
-        <div className="relative flex flex-col gap-4 rounded-md border bg-gray-300 p-4">
-          <div className="flex flex-col">
-            <h4 className="scroll-m-20 border-b py-2 text-xl font-semibold tracking-tight">
+        <div className="relative flex flex-col gap-4 rounded-lg border bg-white p-4 shadow-md">
+          <div className="flex flex-col gap-4">
+            <h3 className="border-l-4 border-blue-600 pl-2 text-xl font-semibold text-blue-600">
+              同意聲明告知事項
+            </h3>
+            <h4 className="scroll-m-20 border-b text-lg font-semibold tracking-tight">
               個人資料告知事項
             </h4>
-            <h4 className="scroll-m-20 border-b py-2 text-xl font-semibold tracking-tight">
+            <h4 className="scroll-m-20 border-b text-lg font-semibold tracking-tight">
               會員服務條款
             </h4>
-            <h4 className="scroll-m-20 border-b py-2 text-xl font-semibold tracking-tight">
+            <h4 className="scroll-m-20 border-b text-lg font-semibold tracking-tight">
               網路投保注意及聲明事項
             </h4>
-            <h4 className="scroll-m-20 border-b py-2 text-xl font-semibold tracking-tight">
+            <h4 className="scroll-m-20 border-b text-lg font-semibold tracking-tight">
               網路保險服務定型化契約
             </h4>
           </div>
@@ -99,8 +100,10 @@ function HifiComponent() {
             that they couldn't help but laugh. And once they started laughing,
             they couldn't stop.
           </ScrollArea>
-          <p className="w-full text-center text-lg text-red-500">
-            請滑動並詳閱條款所載完整內容
+          <p
+            className={`w-full text-center text-lg ${isBottom ? "text-green-500" : "text-red-500"}`}
+          >
+            {isBottom ? "已完成閱覽" : "請滑動並詳閱條款所載完整內容"}
           </p>
           <div className="flex">
             <Checkbox id="agreeTerms" className="mr-2" disabled={!isBottom} />
@@ -118,16 +121,24 @@ function HifiComponent() {
             </Label>
           </div>
         </div>
-        <Button
-          className="w-full rounded text-center font-bold"
-          onClick={() => {
-            navigate({
-              to: "/hi-fi/verify",
-            });
-          }}
-        >
-          確認
-        </Button>
+        <div className="flex gap-4">
+          <Button
+            className="w-full rounded text-center font-bold"
+            variant="outline"
+          >
+            返回
+          </Button>
+          <Button
+            className="w-full rounded bg-blue-600 text-center font-bold"
+            onClick={() => {
+              navigate({
+                to: "/hi-fi/verify",
+              });
+            }}
+          >
+            確認
+          </Button>
+        </div>
       </form>
     </div>
   );

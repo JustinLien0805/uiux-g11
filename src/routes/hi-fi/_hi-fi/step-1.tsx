@@ -29,7 +29,7 @@ import {
   DialogFooter,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { CircleAlert } from "lucide-react";
+import { AlarmClock, Bell, CircleAlert } from "lucide-react";
 import { useState } from "react";
 export const Route = createFileRoute("/hi-fi/_hi-fi/step-1")({
   component: HifiComponent,
@@ -40,19 +40,23 @@ function HifiComponent() {
   const { toast } = useToast();
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col px-4 pt-8">
+    <div className="mx-4 flex flex-col gap-4 rounded-lg bg-white px-4 py-3 shadow-md">
       <h2 className="scroll-m-20 p-2 text-center text-3xl font-semibold tracking-tight first:mt-0">
         保費試算
       </h2>
       <div className="flex flex-col gap-4">
+        <div className="flex items-center gap-2 rounded-lg border border-amber-400 p-2 text-sm">
+          <Bell className="h10 w-10 text-amber-400" />{" "}
+          目前僅開放滿18歲以上旅客幫自己一人投保，需用自己的信用卡，如有多人投保或其他需求，請改洽各分支機構詢問)。
+        </div>
         <div className="flex flex-col gap-2">
           <h4 className="flex scroll-m-20 items-center gap-2 text-xl font-semibold tracking-tight">
             旅遊國家
             <Popover>
               <PopoverTrigger asChild>
-                <CircleAlert className="h-5 w-5" />
+                <CircleAlert className="h-5 w-5 text-yellow-300" />
               </PopoverTrigger>
-              <PopoverContent className="w-60">
+              <PopoverContent className="w-60 border border-yellow-300">
                 <p>紅色警戒區域不可投保，國外旅遊國家最多可選10個。</p>
               </PopoverContent>
             </Popover>
@@ -73,9 +77,9 @@ function HifiComponent() {
             投保身份與年齡
             <Popover>
               <PopoverTrigger asChild>
-                <CircleAlert className="h-5 w-5" />
+                <CircleAlert className="h-5 w-5 text-yellow-300" />
               </PopoverTrigger>
-              <PopoverContent className="w-60">
+              <PopoverContent className="w-60 border border-yellow-300">
                 <p>請必選自己的身份及所屬的年齡區間。</p>
               </PopoverContent>
             </Popover>
@@ -98,9 +102,13 @@ function HifiComponent() {
             旅遊期間(保險期間)
             <Popover>
               <PopoverTrigger asChild>
-                <CircleAlert className="h-5 w-5" />
+                <CircleAlert
+                  className="h-5 w-5 stroke-2
+                  text-yellow-300
+                "
+                />
               </PopoverTrigger>
-              <PopoverContent className="w-60">
+              <PopoverContent className="w-60 border border-yellow-300">
                 <p>
                   旅行保險期間最長180天，一天以24小時計算，建議保險期間涵蓋「從家裡出發至機場返家止」，讓保障更周延。
                 </p>
@@ -137,12 +145,19 @@ function HifiComponent() {
           }}
         >
           <DialogTrigger asChild>
-            <Button>試算保費</Button>
+            <Button className="bg-blue-600 text-white">試算保費</Button>
           </DialogTrigger>
           <DialogContent className="w-80 rounded-md">
             <DialogHeader>
-              <DialogTitle>
-                {reminderStep !== 2 ? "提醒" : "保期確認"}
+              <DialogTitle className="flex items-center justify-center gap-2 text-amber-400">
+                {reminderStep !== 2 ? (
+                  <>
+                    <AlarmClock />
+                    <p>提醒</p>
+                  </>
+                ) : (
+                  <p>保期確認</p>
+                )}
               </DialogTitle>
 
               {reminderStep === 0 && (
@@ -172,7 +187,7 @@ function HifiComponent() {
             <DialogFooter className="flex flex-row items-center gap-2">
               {reminderStep === 0 && (
                 <Button
-                  className="w-full"
+                  className="w-full bg-blue-600"
                   type="button"
                   onClick={() => setReminderStep(1)}
                 >
@@ -182,7 +197,7 @@ function HifiComponent() {
 
               {reminderStep === 1 && (
                 <Button
-                  className="w-full"
+                  className="w-full bg-blue-600"
                   type="button"
                   onClick={() => {
                     toast({
@@ -197,7 +212,7 @@ function HifiComponent() {
               )}
               {reminderStep === 2 && (
                 <Button
-                  className="w-full"
+                  className="w-full bg-blue-600"
                   type="button"
                   onClick={() => {
                     navigate({

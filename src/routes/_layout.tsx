@@ -9,7 +9,7 @@ export const Route = createFileRoute("/_layout")({
 
 function LayoutComponent() {
   const navigate = useNavigate();
-  const hws = ["HW1", "HW2", "HW3", "HW4", "HW5", "HW6"];
+  const hws = ["HW1", "HW2", "HW3", "HW4", "FINAL"];
   const [id, setId] = useState<string>("");
   return (
     <>

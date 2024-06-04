@@ -24,9 +24,14 @@ type CaseType = {
 type Props = {
   insuranceCase: CaseType;
   isPlan: boolean;
+  openExample: () => void;
 };
 
-export const InsuranceAccordion = ({ insuranceCase, isPlan }: Props) => {
+export const InsuranceAccordion = ({
+  insuranceCase,
+  isPlan,
+  openExample,
+}: Props) => {
   const [added, setAdded] = useState<boolean>(false);
   const splitPrice = (price: string) => {
     if (price.length > 10) {
@@ -40,12 +45,16 @@ export const InsuranceAccordion = ({ insuranceCase, isPlan }: Props) => {
     <Accordion
       type="single"
       collapsible
-      className={`rounded-lg ${added ? "bg-blue-300" : "bg-white"} p-4 shadow-md`}
+      className={`rounded-lg ${added ? "border-2 border-green-500" : ""} border p-4 shadow-md`}
     >
       <AccordionItem value={insuranceCase.category}>
         <AccordionTrigger>
-          <div className="flex items-center">
-            {insuranceCase.category} <CircleHelp className="ml-2" />
+          <div className="flex items-center text-blue-600">
+            {insuranceCase.category}{" "}
+            <CircleHelp
+              onClick={openExample}
+              className="ml-2 text-orange-500"
+            />
           </div>
         </AccordionTrigger>
         <AccordionContent className="flex flex-col gap-4">
@@ -80,7 +89,10 @@ export const InsuranceAccordion = ({ insuranceCase, isPlan }: Props) => {
           </ul>
           <Button
             className="w-full p-2 text-lg"
-            onClick={() => setAdded(!added)}
+            variant={added ? "destructive" : "success"}
+            onClick={() => {
+              setAdded(!added);
+            }}
           >
             {added ? "移除保險" : "加購保險"}
           </Button>

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import { HomeworkCard } from "@/components/homework-card";
 import { HwType } from "@/lib/utils";
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/_layout/")({
   component: HomeComponent,
 });
 
@@ -72,7 +72,7 @@ function HomeComponent() {
                 });
               }}
             >
-              Hifi
+              Final Report
               <ArrowDown className="ml-2 h-6 w-6 animate-bounce" />
             </Button>
           </div>
