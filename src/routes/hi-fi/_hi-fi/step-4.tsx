@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useState, useEffect, useRef } from "react";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Check } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -165,13 +165,16 @@ function HifiComponent() {
       <div className="relative flex flex-col gap-4 rounded-lg border bg-white p-4 shadow-md">
         <div className="flex flex-col gap-4">
           <h3 className="border-l-4 border-blue-600 pl-2 text-xl font-semibold text-blue-600">
-            同意聲明告知事項
+            同意聲明告知事項{" "}
+            {isBottom && <Check className="ml-2 text-green-500" />}
           </h3>
-          <h4 className="scroll-m-20 border-b text-lg font-semibold tracking-tight">
-            本商品投保須知
+          <h4 className="flex scroll-m-20 border-b text-lg font-semibold tracking-tight">
+            本商品投保須知{" "}
+            {isBottom && <Check className="ml-2 text-green-500" />}
           </h4>
-          <h4 className="scroll-m-20 border-b text-lg font-semibold tracking-tight">
-            本商品條款內容
+          <h4 className="flex scroll-m-20 border-b text-lg font-semibold tracking-tight">
+            本商品條款內容{" "}
+            {isBottom && <Check className="ml-2 text-green-500" />}
           </h4>
         </div>
         {!isBottom && (
@@ -208,7 +211,7 @@ function HifiComponent() {
           返回
         </Button>
         <Button
-          className="w-full rounded text-center font-bold bg-blue-600"
+          className="w-full rounded bg-blue-600 text-center font-bold"
           onClick={() => {
             navigate({
               to: "/hi-fi/step-5",

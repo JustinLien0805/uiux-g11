@@ -8,7 +8,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useState, useEffect, useRef } from "react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { ArrowDown, Camera } from "lucide-react";
+import { ArrowDown, Camera, Check } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -374,17 +374,21 @@ function HifiComponent() {
             <h3 className="border-l-4 border-blue-600 pl-2 text-xl font-semibold text-blue-600">
               同意聲明告知事項
             </h3>
-            <h4 className="scroll-m-20 border-b text-lg font-semibold tracking-tight">
-              個人資料告知事項
+            <h4 className="flex scroll-m-20 border-b text-lg font-semibold tracking-tight">
+              個人資料告知事項{" "}
+              {isBottom && <Check className="ml-2 text-green-500" />}
             </h4>
-            <h4 className="scroll-m-20 border-b text-lg font-semibold tracking-tight">
-              會員服務條款
+            <h4 className="flex scroll-m-20 border-b text-lg font-semibold tracking-tight">
+              會員服務條款{" "}
+              {isBottom && <Check className="ml-2 text-green-500" />}
             </h4>
-            <h4 className="scroll-m-20 border-b text-lg font-semibold tracking-tight">
-              網路投保注意及聲明事項
+            <h4 className="flex scroll-m-20 border-b text-lg font-semibold tracking-tight">
+              網路投保注意及聲明事項{" "}
+              {isBottom && <Check className="ml-2 text-green-500" />}
             </h4>
-            <h4 className="scroll-m-20 border-b text-lg font-semibold tracking-tight">
+            <h4 className="flex scroll-m-20 border-b text-lg font-semibold tracking-tight">
               網路保險服務定型化契約
+              {isBottom && <Check className="ml-2 text-green-500" />}
             </h4>
           </div>
           {!isBottom && (

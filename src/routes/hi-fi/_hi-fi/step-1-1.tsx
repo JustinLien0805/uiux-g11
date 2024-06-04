@@ -58,7 +58,7 @@ function HifiComponent() {
                 不知道多少保費適合你嗎?
               </Button>
             </DialogTrigger>
-            <DialogContent className="w-96 rounded-md">
+            <DialogContent className="w-11/12 rounded-md">
               <DialogHeader>
                 <DialogTitle>意外死亡及失能</DialogTitle>
                 <DialogDescription>
@@ -150,7 +150,7 @@ function HifiComponent() {
                 不知道什麼方案適合你嗎?
               </Button>
             </DialogTrigger>
-            <DialogContent className="w-96 rounded-md">
+            <DialogContent className="w-11/12 rounded-md">
               <DialogHeader>
                 <DialogTitle>保險方案投保百分比</DialogTitle>
                 <DialogDescription>
@@ -197,8 +197,8 @@ function HifiComponent() {
           setIsOpen(!isOpen);
         }}
       >
-        <DialogContent className="w-96 rounded-md">
-          <img src={example} />
+        <DialogContent className="w-10/12 rounded-md">
+          <img src={example} className="w-full" />
         </DialogContent>
       </Dialog>
     </>
