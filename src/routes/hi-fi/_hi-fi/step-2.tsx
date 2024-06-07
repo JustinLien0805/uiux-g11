@@ -55,6 +55,55 @@ function HifiComponent() {
   // const capture = useCallback(() => {
   //   const imageSrc = webcamRef.current?.getScreenshot();
   // }, [webcamRef]);
+
+  const [sameAsApplicant, setSameAsApplicant] = useState(false);
+  const [formData, setFormData] = useState({
+    id: "",
+    name: "",
+    phone: "",
+    nationality: "台灣",
+    email: "",
+    occupation: "一般職業",
+    city: "",
+    district: "",
+    address: "",
+    relationship: "",
+    beneficiary: "option-one",
+  });
+
+  const handleCheckboxChange = () => {
+    setSameAsApplicant(!sameAsApplicant);
+    if (!sameAsApplicant) {
+      setFormData({
+        id: "A123456789",
+        name: "example",
+        phone: "0912345678",
+        nationality: "台灣",
+        email: "example@mail.com",
+        occupation: "一般職業",
+        city: "台北市",
+        district: "中正區",
+        address: "中正路1號",
+        relationship: "本人",
+        beneficiary: "option-one",
+      });
+    } else {
+      setFormData({
+        id: "",
+        name: "",
+        phone: "",
+        nationality: "台灣",
+        email: "",
+        occupation: "一般職業",
+        city: "",
+        district: "",
+        address: "",
+        relationship: "",
+        beneficiary: "option-one",
+      });
+    }
+  };
+
   return (
     <div className="flex flex-col gap-4 p-4">
       <h2 className="text-center text-xl font-bold">填寫資料</h2>
@@ -210,7 +259,12 @@ function HifiComponent() {
           </h2>
 
           <div className="flex">
-            <Checkbox id="same" className="mr-2" />
+            <Checkbox
+              id="same"
+              className="mr-2"
+              checked={sameAsApplicant}
+              onCheckedChange={handleCheckboxChange}
+            />
             <Label htmlFor="same">同要保人資料</Label>
           </div>
           {showCamera && (
@@ -249,7 +303,10 @@ function HifiComponent() {
               <Input
                 type="text"
                 className="w-full border p-2"
-                defaultValue="A123456789"
+                value={formData.id}
+                onChange={(e) =>
+                  setFormData({ ...formData, id: e.target.value })
+                }
               />
             </div>
             <div>
@@ -257,7 +314,10 @@ function HifiComponent() {
               <Input
                 type="text"
                 className="w-full border p-2"
-                defaultValue="練家辰"
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
               />
             </div>
             <div>
@@ -265,12 +325,20 @@ function HifiComponent() {
               <Input
                 type="text"
                 className="w-full border p-2"
-                defaultValue="0912345678"
+                value={formData.phone}
+                onChange={(e) =>
+                  setFormData({ ...formData, phone: e.target.value })
+                }
               />
             </div>
             <div>
               <Label className="mb-2 block">國籍 *</Label>
-              <Select defaultValue="台灣">
+              <Select
+                value={formData.nationality}
+                onValueChange={(value) =>
+                  setFormData({ ...formData, nationality: value })
+                }
+              >
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
@@ -283,11 +351,23 @@ function HifiComponent() {
             </div>
             <div>
               <Label className="mb-2 block">電子郵件 *</Label>
-              <Input type="email" className="w-full border p-2" />
+              <Input
+                type="email"
+                className="w-full border p-2"
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+              />
             </div>
             <div>
               <Label className="mb-2 block">職/行業別 *</Label>
-              <Select defaultValue="一般職業">
+              <Select
+                value={formData.occupation}
+                onValueChange={(value) =>
+                  setFormData({ ...formData, occupation: value })
+                }
+              >
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
@@ -303,7 +383,12 @@ function HifiComponent() {
 
             <div className="flex flex-col gap-2">
               <Label>地址 *</Label>
-              <Select>
+              <Select
+                value={formData.city}
+                onValueChange={(value) =>
+                  setFormData({ ...formData, city: value })
+                }
+              >
                 <SelectTrigger>
                   <SelectValue placeholder="縣市" />
                 </SelectTrigger>
@@ -317,7 +402,12 @@ function HifiComponent() {
                   </SelectGroup>
                 </SelectContent>
               </Select>
-              <Select>
+              <Select
+                value={formData.district}
+                onValueChange={(value) =>
+                  setFormData({ ...formData, district: value })
+                }
+              >
                 <SelectTrigger>
                   <SelectValue placeholder="區域" />
                 </SelectTrigger>
@@ -334,12 +424,21 @@ function HifiComponent() {
               <Input
                 type="text"
                 className="w-full border p-2"
+                value={formData.address}
+                onChange={(e) =>
+                  setFormData({ ...formData, address: e.target.value })
+                }
                 placeholder="巷/弄/號/樓"
               />
             </div>
             <div>
               <Label className="mb-2 block">被保險人是要保人的誰(關係) *</Label>
-              <Select>
+              <Select
+                value={formData.relationship}
+                onValueChange={(value) =>
+                  setFormData({ ...formData, relationship: value })
+                }
+              >
                 <SelectTrigger>
                   <SelectValue placeholder="請選擇關係" />
                 </SelectTrigger>
@@ -353,7 +452,10 @@ function HifiComponent() {
             <div>
               <Label className="mb-2 block">身故受益人 *</Label>
               <RadioGroup
-                defaultValue="option-one"
+                value={formData.beneficiary}
+                onValueChange={(value) =>
+                  setFormData({ ...formData, beneficiary: value })
+                }
                 className="flex items-center justify-center gap-2"
               >
                 <div className="flex items-center space-x-2">
