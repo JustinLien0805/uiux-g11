@@ -1,5 +1,5 @@
 import * as React from "react";
-import { addDays, format } from "date-fns";
+import { format, differenceInDays } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { DateRange } from "react-day-picker";
 
@@ -14,12 +14,13 @@ import {
 
 export function DatePickerWithRange({
   className,
-}: React.HTMLAttributes<HTMLDivElement>) {
-  const [date, setDate] = React.useState<DateRange | undefined>({
-    // set to current date and 20 days from now
-    from: new Date(),
-    to: addDays(new Date(), 20),
-  });
+  date,
+  setDate,
+}: {
+  className?: string;
+  date?: DateRange;
+  setDate: React.Dispatch<React.SetStateAction<DateRange | undefined>>;
+}) {
   const ref = React.useRef<HTMLButtonElement>(null);
   return (
     <>
@@ -43,7 +44,11 @@ export function DatePickerWithRange({
                 date.to ? (
                   <>
                     {format(date.from, "LLL dd, y")} -{" "}
-                    {format(date.to, "LLL dd, y")} 共 20 天
+                    {format(date.to, "LLL dd, y")} 共{" "}
+                    {date?.to &&
+                      date?.from &&
+                      differenceInDays(date?.to, date?.from)}{" "}
+                    天
                   </>
                 ) : (
                   format(date.from, "LLL dd, y")

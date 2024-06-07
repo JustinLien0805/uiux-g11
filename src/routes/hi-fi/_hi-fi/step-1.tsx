@@ -31,14 +31,35 @@ import {
 } from "@/components/ui/dialog";
 import { AlarmClock, Bell, CircleAlert } from "lucide-react";
 import { useState } from "react";
+import { addDays, format, differenceInDays, set } from "date-fns";
+import { DateRange } from "react-day-picker";
 export const Route = createFileRoute("/hi-fi/_hi-fi/step-1")({
   component: HifiComponent,
 });
 
 function HifiComponent() {
   const [reminderStep, setReminderStep] = useState<number>(0);
+  const [date, setDate] = useState<DateRange | undefined>({
+    // set to current date and 20 days from now
+    from: new Date(),
+    to: addDays(new Date(), 20),
+  });
+  const [hour, setHour] = useState<string>("08:00");
   const { toast } = useToast();
   const navigate = useNavigate();
+
+  const isDateRangeValid = () => {
+    if (!date?.from || !date?.to) {
+      return;
+    }
+
+    if (differenceInDays(date?.from, Date.now()) > 30) {
+      setReminderStep(0);
+    } else {
+      setReminderStep(2);
+    }
+  };
+
   return (
     <div className="mx-4 flex flex-col gap-4 rounded-lg bg-white px-4 py-3 shadow-md">
       <h2 className="scroll-m-20 p-2 text-center text-3xl font-semibold tracking-tight first:mt-0">
@@ -115,8 +136,8 @@ function HifiComponent() {
               </PopoverContent>
             </Popover>
           </h4>
-          <DatePickerWithRange />
-          <Select>
+          <DatePickerWithRange date={date} setDate={setDate} />
+          <Select onValueChange={(value) => setHour(value)}>
             <SelectTrigger>
               <SelectValue placeholder="請選擇時間" />
             </SelectTrigger>
@@ -138,12 +159,7 @@ function HifiComponent() {
           </h4>
           <Input placeholder="請輸入活動代碼" />
         </div>
-        <Dialog
-          onOpenChange={() => {
-            setReminderStep(0);
-            console.log("first");
-          }}
-        >
+        <Dialog onOpenChange={isDateRangeValid}>
           <DialogTrigger asChild>
             <Button className="bg-blue-600 text-white">試算保費</Button>
           </DialogTrigger>
@@ -162,14 +178,16 @@ function HifiComponent() {
 
               {reminderStep === 0 && (
                 <div>
-                  所選出發日：2024-07-01 為一個月後，目前無法進行投保，是否開啟
-                  Reminder 功能
+                  所選出發日：{date?.from && format(date.from, "LLL dd, y")}{" "}
+                  為一個月後，目前無法進行投保，是否開啟 Reminder 功能
                 </div>
               )}
               {reminderStep === 1 && (
                 <>
                   <div className="mb-2">
-                    目前所選出發日為：2024-07-01 將於可投保時寄信至下方 email
+                    目前所選出發日為：
+                    {date?.from && format(date.from, "LLL dd, y")}{" "}
+                    將於可投保時寄信至下方 email
                   </div>
                   <Input type="email" placeholder="Email" />
                 </>
@@ -178,7 +196,12 @@ function HifiComponent() {
                 <>
                   <div className="mb-2">本次投保的保險期間為 :</div>
                   <div className="mb-2">
-                    [2024-05-29 08:00 ~ 2024-05-30 08:00 共1天]
+                    [{date?.from && format(date.from, "LLL dd, y")} {hour} ~{" "}
+                    {date?.to && format(date.to, "LLL dd, y")} {hour} 共{" "}
+                    {date?.to &&
+                      date?.from &&
+                      differenceInDays(date?.to, date?.from)}{" "}
+                    天]
                   </div>
                   <div className="mb-2">請再檢視保期是否完整</div>
                 </>
