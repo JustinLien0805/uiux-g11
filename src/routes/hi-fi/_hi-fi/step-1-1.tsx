@@ -45,7 +45,7 @@ function HifiComponent() {
             旅遊行程
           </h2>
           <p>旅遊國家: 日本</p>
-          <p>旅遊期間: 2024-05-01 23:00 ~ 2024-05-18 23:00，共17天</p>
+          <p>旅遊期間: 2024-07-20 23:00 ~ 2024-07-25 23:00，共5天</p>
         </div>
         <div className="space-y-4 rounded-lg bg-white px-4 py-3 shadow-md">
           <h2 className="border-l-4 border-blue-600 pl-2 text-lg font-semibold text-blue-600">

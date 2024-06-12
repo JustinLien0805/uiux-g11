@@ -55,7 +55,7 @@ function HifiComponent() {
         </h2>
         <div className="mt-2 text-gray-700">
           <p>旅遊國家：日本</p>
-          <p>旅遊期間：2024-06-13 00:00 ~ 2024-06-14 00:00:00 共1天</p>
+          <p>旅遊期間：2024-07-20 00:00 ~ 2024-07-25 00:00:00 共5天</p>
         </div>
       </div>
       <div className="rounded-lg bg-white px-4 py-3 shadow-md">
