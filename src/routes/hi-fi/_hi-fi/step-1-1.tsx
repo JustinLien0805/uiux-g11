@@ -188,7 +188,7 @@ function HifiComponent() {
           </Button>
         </div>
       </div>
-      <div className="fixed bottom-0 left-0 w-full bg-blue-500 p-4 text-center text-white">
+      <div className="fixed bottom-0 left-0 w-full bg-blue-500 p-4 text-center h-24 flex items-center justify-center text-white">
         總計保費：NT$ 1,500 / 1 人
       </div>
       <Dialog

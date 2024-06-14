@@ -103,6 +103,9 @@ function HifiComponent() {
       });
     }
   };
+  const videoConstraints = {
+    facingMode: { exact: "environment" },
+  };
 
   return (
     <div className="flex flex-col gap-4 p-4">
@@ -122,6 +125,7 @@ function HifiComponent() {
           {showCamera && (
             <div className="grid gap-2">
               <Webcam
+                videoConstraints={videoConstraints}
                 mirrored={true}
                 ref={webcamRef}
                 audio={false}
@@ -272,6 +276,7 @@ function HifiComponent() {
               <Webcam
                 mirrored={true}
                 ref={webcamRef}
+                videoConstraints={videoConstraints}
                 audio={false}
                 screenshotFormat="image/jpeg"
               />
