@@ -69,6 +69,7 @@ function HifiComponent() {
         <div className="flex items-center gap-2 rounded-lg border border-amber-400 p-2 text-sm">
           <Bell className="h10 w-10 text-amber-400" />{" "}
           目前僅開放滿18歲以上旅客幫自己一人投保，需用自己的信用卡，如有多人投保或其他需求，請改洽各分支機構詢問)。
+          整個流程會大約花費5分種
         </div>
         <div className="flex flex-col gap-2">
           <h4 className="flex scroll-m-20 items-center gap-2 text-xl font-semibold tracking-tight">

@@ -21,7 +21,7 @@ const feedbacks = [
   },
   {
     issue: "接近五成的使用者反映在保單加購時選擇“確認加購”後畫面不會顯示更動",
-    explanation: "功能問題",
+    explanation: "操作後沒有反應",
     solution: "如果用戶決定加購將改變顏色並顯示出所有訊息",
   },
   {
